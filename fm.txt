@@ -1,0 +1,4 @@
+# Seretân Digital Audio — FM kanal listesi
+# Her satıra bir kanal: Kanal Adı | frekans (MHz), ör.  Örnek Radyo | 99.9
+# FM frekansları şehre göre değişir; bu liste satışın yapıldığı bölgeye göre doldurulmalı.
+# '#' ile başlayan satırlar yok sayılır.
