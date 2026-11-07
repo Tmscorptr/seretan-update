@@ -1,37 +1,37 @@
-# Seretân Digital Audio — güncelleme deposu
+# Seretân Digital Audio — Update Repository
 
-Bu klasör, GitHub'daki **herkese açık** [Tmscorptr/seretan-update](https://github.com/Tmscorptr/seretan-update) deposunun içeriğidir. Uygulamanın kodu burada
-**yoktur**. Kod gizli kalır; burada yalnızca cihazların indireceği dosyalar bulunur.
+This public repository contains only the files that Seretân Digital Audio devices download.
+The application source code is **not** here; it stays private.
 
-| Dosya | Ne işe yarar | Cihazda nerede kullanılır |
+| File | Purpose | Used on the device |
 |---|---|---|
-| `radyolar.json` | İnternet radyosu listesi (`name`, `url`, `genre`) | Ayarlar → Radyo → Sunucudan güncelle |
-| `fm.txt` | FM kanal listesi (`Ad \| frekans`) | Ayarlar → Radyo → FM'i sunucudan güncelle |
-| `son-surum.json` | Yayındaki sistem güncellemeleri | Ayarlar → Sistem → Güncellemeleri denetle |
-| Releases | `.raucb` sistem güncelleme paketleri (imzalı) | `son-surum.json` içindeki adresten indirilir |
+| `stations.json` | Internet radio list (`name`, `url`, `genre`) | Radio → Add → From server → Update now |
+| `fm.txt` | FM channel list (`Name \| frequency`) | Same screen, FM tab |
+| `latest.json` | Published system updates | Settings → System → Check for updates |
+| Releases | Signed system update bundles (`.raucb`) | Downloaded from the URL in `latest.json` |
 
-## Cihazlar dosyaları nereden okur
+## Where devices read the files
 
-`https://raw.githubusercontent.com/Tmscorptr/seretan-update/main/<dosya>`
-(`server/src/config.ts` → `DEFAULT_UPDATE_BASE`; `UPDATE_BASE_URL` ortam değişkeniyle değiştirilebilir).
-Depo herkese açık olduğu için ek ayar (Pages) gerekmez. GitHub bu adresi birkaç dakika önbellekte tutar;
-değişiklik cihazlara en geç ~5 dakikada ulaşır.
+`https://raw.githubusercontent.com/Tmscorptr/seretan-update/main/<file>`
 
-## Dosyaları depoya yüklemek
+The repository is public, so no extra setup (such as GitHub Pages) is needed. GitHub caches these
+URLs for a few minutes, so changes reach devices within about 5 minutes.
 
-GitHub'da depo → **Add file → Upload files** → bu klasördeki `radyolar.json`, `fm.txt`,
-`son-surum.json` ve `README.md` dosyalarını sürükleyin → **Commit changes**.
+## Updating the radio list
 
-## Radyo listesini güncellemek
+Edit `stations.json` and commit. When "Update now" is pressed, devices add new stations and update
+existing ones. Stations added by the user are never removed.
 
-`radyolar.json` dosyasını düzenleyip depoya gönderin. Cihazlar "Sunucudan güncelle" dendiğinde yeni
-istasyonları ekler, var olanları günceller.
+## Updating the FM list
 
-## Yeni sistem sürümü yayınlamak
+FM frequencies differ by city, so `fm.txt` should be filled in for the region where the devices are
+sold. One channel per line: `Station Name | 99.9`. Lines starting with `#` are ignored.
 
-1. Buildroot ile imzalı `.raucb` paketini üretin (ör. `seretan-cm4-0.2.0.raucb`).
-2. Depo → **Releases** → yeni sürüm (`v0.2.0`) → paketi ekleyip yayınlayın.
-3. `son-surum.json` dosyasına bir kayıt ekleyin (her donanım için ayrı):
+## Publishing a new system version
+
+1. Build the signed `.raucb` bundle with Buildroot (e.g. `seretan-cm4-0.2.0.raucb`).
+2. Repository → **Releases** → new release (`v0.2.0`) → attach the bundle → publish.
+3. Add an entry to `latest.json` (one per hardware type):
 
 ```json
 {
@@ -41,15 +41,17 @@ istasyonları ekler, var olanları günceller.
       "version": "0.2.0",
       "url": "https://github.com/Tmscorptr/seretan-update/releases/download/v0.2.0/seretan-cm4-0.2.0.raucb",
       "size": 123456789,
-      "sha256": "<paketin sha256 özeti>",
-      "notes": "Klasörden çalma, harf atlama çubuğu"
+      "sha256": "<sha256 of the bundle>",
+      "notes": "Folder playback, A–Z index"
     }
   ]
 }
 ```
 
-- `compatible`, imajdaki `/etc/rauc/system.conf` ile aynı olmalıdır. Cihaz yalnızca kendi donanımına
-  uygun ve kurulu sürümden **daha yeni** paketi gösterir.
-- `sha256` için: Windows'ta `certutil -hashfile paket.raucb SHA256`, Linux'ta `sha256sum paket.raucb`.
-- Paketler imzalıdır. Depoya başkası dosya koysa bile cihaz imzasız ya da yanlış imzalı paketi kurmaz.
-- Aynı paket USB bellekle de kurulabilir: dosyayı belleğin ana klasörüne koyun (internetsiz güncelleme).
+- `compatible` must match `/etc/rauc/system.conf` in the image. A device only offers a bundle for its
+  own hardware that is **newer** than the installed version.
+- To get the `sha256`: on Windows `certutil -hashfile bundle.raucb SHA256`, on Linux `sha256sum bundle.raucb`.
+- Bundles are signed. Even if someone else placed a file here, devices would refuse unsigned or
+  wrongly signed bundles.
+- The same bundle can be installed offline from a USB stick: put the file in the top folder of the
+  stick and plug it in.
