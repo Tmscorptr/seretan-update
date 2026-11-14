@@ -5,7 +5,9 @@ The application source code is **not** here; it stays private.
 
 | File | Purpose | Used on the device |
 |---|---|---|
-| `stations.json` | Internet radio list (`name`, `url`, `genre`) | Radio → Add → From server → Update now |
+| `stations.json` | Internet radio list (`name`, `url`, `genre`, optional `logo`) | Radio → Add → From server → Update now |
+| `logos/` | Station logo images named in the `logo` field of `stations.json` | Downloaded when a station's logo file is missing on the device |
+| `logo-library/` | Logo library: `index.json` (`name`, `file`) and `lib-<name>.png` images (max 256 px). Stations without their own logo get one by name | Downloaded on first start and on every "Update now"; only missing files are fetched |
 | `fm.txt` | FM channel list (`Name \| frequency`) | Same screen, FM tab |
 | `latest.json` | Published system updates | Settings → System → Check for updates |
 | Releases | Signed system update bundles (`.raucb`) | Downloaded from the URL in `latest.json` |
@@ -21,6 +23,12 @@ URLs for a few minutes, so changes reach devices within about 5 minutes.
 
 Edit `stations.json` and commit. When "Update now" is pressed, devices add new stations and update
 existing ones. Stations added by the user are never removed.
+
+## Adding a logo to the library
+
+Put a PNG named `lib-<name>.png` (lowercase letters and digits only) into `logo-library/` and add a line
+`{"name": "Station Name", "file": "lib-<name>.png"}` to `logo-library/index.json`. Several names may point to the
+same file. Logos are trademarks of their stations.
 
 ## Updating the FM list
 
