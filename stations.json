@@ -1,5 +1,6 @@
 [
   { "id": "powerdance", "name": "Power Dance", "url": "https://listen.powerapp.com.tr/powerdance/mpeg/icecast.audio", "genre": "Clubbing" },
+  { "id": "radyofenomen", "name": "Radyo Fenomen", "url": "https://live.radyofenomen.com/fenomen/128/icecast.audio", "genre": "Yabancı Pop" },
   { "id": "radyofenomenclubbin", "name": "Radyo Fenomen Clubbin", "url": "https://live.radyofenomen.com/fenomenclubbin/128/icecast.audio", "genre": "Club", "logo": "rb-6f3d3422-9998-4079-8e1a-7d23cef150ea.png" },
   { "id": "radyos", "name": "Radyo S", "url": "http://icecast.netmedya.net/radyos", "genre": "Dance" },
   { "id": "dinamofmcaffe", "name": "dinamo.fm caffe", "url": "http://channels.dinamo.fm/caffe-mp3", "genre": "Chillout", "logo": "rb-2815bbc7-2cbf-11e8-91bf-52543be04c81.jpg" },
