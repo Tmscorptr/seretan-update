@@ -28,7 +28,7 @@
   { "id": "superfm", "name": "Süper FM", "url": "http://provisioning.streamtheworld.com/pls/SUPER_FMAAC.pls", "genre": "Türkçe Pop", "logo": "superfm.ico" },
   { "id": "trtfm", "name": "TRT FM", "url": "https://trt.radyotvonline.net/trtfm", "genre": "Türkçe Pop", "logo": "trtfm.png" },
   { "id": "virginradio", "name": "Virgin Radio", "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/VIRGIN_RADIO_SC", "genre": "Yabancı Pop" },
-  { "id": "powerfm", "name": "Power FM", "url": "https://listen.powerapp.com.tr/powerfm/256/chunks.m3u8", "genre": "Yabancı Pop" },
+  { "id": "powerfm", "name": "Power FM", "url": "https://live.powerapp.com.tr/powerfmadver/256/playlist.m3u8", "genre": "Yabancı Pop" },
   { "id": "radiomydonose", "name": "Radio Mydonose", "url": "https://29083.live.streamtheworld.com/RADIO_MYDONOSE128AAC.aac", "genre": "Yabancı Pop" },
   { "id": "number1fm", "name": "Number 1 FM", "url": "https://ssldyg2.radyotvonline.com/live/numberonefm.stream/playlist.m3u8", "genre": "Yabancı Pop" },
   { "id": "radyoeksen", "name": "Radyo Eksen", "url": "http://eksenwmp.radyotvonline.com/;stream.mp3", "genre": "Rock" },
