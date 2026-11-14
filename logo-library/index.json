@@ -1,6 +1,7 @@
 [
 {"name": "101.4 HATAY TEMPO FM", "file": "lib-1014hataytempofm.png"},
 {"name": "107.4 Radio Voyage", "file": "lib-1074radiovoyage.png"},
+{"name": "Radyo Voyage", "file": "lib-1074radiovoyage.png"},
 {"name": "90'lar Türkçe Pop", "file": "lib-90larturkcepop.png"},
 {"name": "90lar turkey", "file": "lib-90larturkey.png"},
 {"name": "91.8 İstanbul'un Sesi", "file": "lib-918istanbulunsesi.png"},
@@ -112,6 +113,7 @@
 {"name": "Pir Yolu", "file": "lib-piryolu.png"},
 {"name": "Power Dance", "file": "lib-powerdance.png"},
 {"name": "Power Deep", "file": "lib-powerdeep.png"},
+{"name": "Power FM", "file": "lib-powerfmturkiye.png"},
 {"name": "Power FM Türkiye", "file": "lib-powerfmturkiye.png"},
 {"name": "Power Gold TR", "file": "lib-powergoldtr.png"},
 {"name": "Power love", "file": "lib-powerlove.png"},
@@ -199,6 +201,7 @@
 {"name": "TRT Memleketim FM", "file": "lib-trtmemleketimfm.png"},
 {"name": "TRT NAĞME", "file": "lib-trtnagme.png"},
 {"name": "TRT Radyo 1", "file": "lib-trtradyo1.png"},
+{"name": "TRT Radyo 3", "file": "lib-trt3.png"},
 {"name": "TRT Radyo Haber", "file": "lib-trtradyohaber.png"},
 {"name": "TRT Trabzon", "file": "lib-trttrabzon.png"},
 {"name": "TRT TSR", "file": "lib-trttsr.png"},
